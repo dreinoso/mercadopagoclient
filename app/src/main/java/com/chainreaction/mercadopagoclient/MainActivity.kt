@@ -10,12 +10,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.name, MainFragment.newInstance())
-                    .commitNow()
-        }
-
         binding = MainActivityBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)

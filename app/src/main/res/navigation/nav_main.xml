@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/amountFragment">
+
+    <fragment
+        android:id="@+id/amountFragment"
+        android:name="com.chainreaction.mercadopagoclient.ui.main.AmountFragment"
+        android:label="fragment_amount"
+        tools:layout="@layout/fragment_amount" >
+        <action
+            android:id="@+id/action_amountFragment_to_paymentMethodFragment"
+            app:destination="@id/paymentMethodFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentMethodFragment"
+        android:name="com.chainreaction.mercadopagoclient.ui.main.paymentMethodFragment"
+        android:label="fragment_payment_method_list"
+        tools:layout="@layout/fragment_payment_method_list" >
+        <action
+            android:id="@+id/action_paymentMethodFragment_to_paymentBankFragment"
+            app:destination="@id/paymentBankFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/installmnentFragment"
+        android:name="com.chainreaction.mercadopagoclient.ui.main.installmnentFragment"
+        android:label="fragment_installmnent_list"
+        tools:layout="@layout/fragment_installmnent_list" >
+        <action
+            android:id="@+id/action_installmnentFragment_to_amountFragment"
+            app:destination="@id/amountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentBankFragment"
+        android:name="com.chainreaction.mercadopagoclient.ui.main.PaymentBankFragment"
+        android:label="fragment_payment_bank_list"
+        tools:layout="@layout/fragment_payment_bank_list" >
+        <action
+            android:id="@+id/action_paymentBankFragment_to_installmnentFragment"
+            app:destination="@id/installmnentFragment" />
+    </fragment>
+
+</navigation>
