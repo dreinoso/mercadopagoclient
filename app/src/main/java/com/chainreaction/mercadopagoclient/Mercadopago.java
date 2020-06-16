@@ -61,4 +61,20 @@ public class Mercadopago {
         PaymentService service = restAdapterApi.create(PaymentService.class);
         return service.getPaymentMethodById(defaultPublishableKey, paymentMethod);
     }
+
+    public List<PaymentMethod> getPaymentMethods(String paymentMethod){
+        PaymentService service = restAdapterApi.create(PaymentService.class);
+        return service.getPaymentMethod(defaultPublishableKey);
+    }
+
+    public List<PaymentMethod> getCardIssuers(String paymentMethod, String paymentMethodId){
+        PaymentService service = restAdapterApi.create(PaymentService.class);
+        return service.getCardIssuers(defaultPublishableKey, paymentMethodId);
+    }
+
+    public List<PaymentMethod> getInstallments(String paymentMethod, String paymentMethodId,
+                                               String issuerId, Long amount){
+        PaymentService service = restAdapterApi.create(PaymentService.class);
+        return service.getInstallments(defaultPublishableKey, paymentMethodId, issuerId, amount);
+    }
 }

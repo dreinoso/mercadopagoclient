@@ -10,6 +10,21 @@ import retrofit.http.Query;
 
 public interface PaymentService {
 
+    @GET("https://api.mercadopago.com/v1/payment_methods")
+    List<PaymentMethod> getPaymentMethod(@Query("public_key") String public_key);
+
+    @GET("https://api.mercadopago.com/v1/payment_methods/card_issuers")
+    List<PaymentMethod> getCardIssuers(
+            @Query("public_key") String public_key,
+            @Query("payment_method_id") String payment_method_id);
+
+    @GET("https://api.mercadopago.com/v1/payment_methods/installments")
+    List<PaymentMethod> getInstallments(
+            @Query("public_key") String public_key,
+            @Query("payment_method_id") String payment_method_id,
+            @Query("issuer.id") String issuerId,
+            @Query("amount") Long amount);
+
     @GET("/checkout/custom/payment_methods/search")
     List<PaymentMethod> getPaymentMethodByBin(@Query("public_key") String public_key, @Query("bin") String bin);
 
