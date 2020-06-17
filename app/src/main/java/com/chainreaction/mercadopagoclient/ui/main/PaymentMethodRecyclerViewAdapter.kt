@@ -1,37 +1,44 @@
 package com.chainreaction.mercadopagoclient.ui.main
 
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.chainreaction.mercadopagoclient.R
+import com.chainreaction.mercadopagoclient.model.PaymentGroup
+import com.chainreaction.mercadopagoclient.model.PaymentMethod
 
 
 import com.chainreaction.mercadopagoclient.ui.main.paymentMethodFragment.OnListFragmentInteractionListener
 import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent.DummyItem
-
 import kotlinx.android.synthetic.main.fragment_payment_method.view.*
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnListFragmentInteractionListener].
- * TODO: Replace the implementation with code for your data type.
- */
 class PaymentMethodRecyclerViewAdapter(
-    private val mValues: List<DummyItem>,
+    private val allMethods: List<PaymentMethod>,
     private val mListener: OnListFragmentInteractionListener?
 ) : RecyclerView.Adapter<PaymentMethodRecyclerViewAdapter.ViewHolder>() {
+
+    val TAG: String = "PaymentMethodRecyclerViewAdapter"
+    private var mValues: List<PaymentGroup>
+
+    private fun groupMethods(): List<PaymentGroup> {
+        var methods: List<PaymentGroup> = mutableListOf()
+        val groups : Map<String?, Int> = allMethods.groupingBy { it.paymentTypeId }.eachCount()
+        groups.forEach({(k,v) -> methods += PaymentGroup(k, v)})
+        return methods
+    }
 
     private val mOnClickListener: View.OnClickListener
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as DummyItem
-            // Notify the active callbacks interface (the activity, if the fragment is attached to
-            // one) that an item has been selected.
-            mListener?.onListFragmentInteraction(item)
+            mListener?.onListFragmentInteraction(v.name.text.toString())
         }
+
+        mValues = groupMethods()
+        Log.d(TAG.toString(), mValues.toString())
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -42,8 +49,8 @@ class PaymentMethodRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
+        holder.mIdView.text = item.type
+        holder.mContentView.text = item.count.toString()
 
         with(holder.mView) {
             tag = item
@@ -54,8 +61,8 @@ class PaymentMethodRecyclerViewAdapter(
     override fun getItemCount(): Int = mValues.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.item_number
-        val mContentView: TextView = mView.content
+        val mIdView: TextView = mView.name
+        val mContentView: TextView = mView.count
 
         override fun toString(): String {
             return super.toString() + " '" + mContentView.text + "'"

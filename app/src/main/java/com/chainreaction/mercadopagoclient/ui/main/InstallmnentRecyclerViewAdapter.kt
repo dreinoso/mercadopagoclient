@@ -11,7 +11,7 @@ import com.chainreaction.mercadopagoclient.R
 import com.chainreaction.mercadopagoclient.ui.main.InstallmentFragment.OnListFragmentInteractionListener
 import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent.DummyItem
 
-import kotlinx.android.synthetic.main.fragment_installmnent.view.*
+//import kotlinx.android.synthetic.main.fragment_installmnent.view.*
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
@@ -28,8 +28,6 @@ class InstallmnentRecyclerViewAdapter(
     init {
         mOnClickListener = View.OnClickListener { v ->
             val item = v.tag as DummyItem
-            // Notify the active callbacks interface (the activity, if the fragment is attached to
-            // one) that an item has been selected.
             mListener?.onListFragmentInteraction(item)
         }
     }
@@ -42,8 +40,8 @@ class InstallmnentRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
+//        holder.mIdView.text = item.id
+//        holder.mContentView.text = item.content
 
         with(holder.mView) {
             tag = item
@@ -54,11 +52,12 @@ class InstallmnentRecyclerViewAdapter(
     override fun getItemCount(): Int = mValues.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.item_number
-        val mContentView: TextView = mView.content
+//        val mIdView: TextView = mView.item_number
+//        val mContentView: TextView = mView.content
 
         override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
+//            return super.toString() + " '" + mContentView.text + "'"
+            return ""
         }
     }
 }

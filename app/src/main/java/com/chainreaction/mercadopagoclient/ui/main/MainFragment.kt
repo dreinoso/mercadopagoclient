@@ -53,7 +53,7 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        mp = context?.let { Mercadopago("841d020b-1077-4742-ad55-7888a0f5aefa", it) }
+        mp = Mercadopago("841d020b-1077-4742-ad55-7888a0f5aefa")
         setInputs()
         //Get payment methods and show installments spinner
         handleInstallments()
@@ -110,7 +110,7 @@ class MainFragment : Fragment() {
                 "Loading. Please wait...",
                 true
             )
-            mp?.createToken(card, callback)
+            context?.let { mp?.createToken(card, callback, it) }
         } else {
             Toast.makeText(context, "Invalid data", Toast.LENGTH_LONG).show()
         }

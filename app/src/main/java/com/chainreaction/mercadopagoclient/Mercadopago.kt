@@ -10,7 +10,7 @@ import retrofit.Callback
 import retrofit.RestAdapter
 import retrofit.converter.GsonConverter
 
-class Mercadopago(private val defaultPublishableKey: String, private val mContext: Context) {
+class Mercadopago(private val defaultPublishableKey: String) {
     private val gson =
         GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
             .serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").create()
@@ -21,11 +21,12 @@ class Mercadopago(private val defaultPublishableKey: String, private val mContex
         RestAdapter.Builder().setEndpoint(BASE_URL)
             .setLogLevel(RestAdapter.LogLevel.FULL).setConverter(GsonConverter(gson)).build()
 
-    fun createToken(
+    fun createToken (
         card: Card,
-        callback: Callback<*>?
+        callback: Callback<*>?,
+        context: Context
     ) {
-        card.setDevice(mContext)
+        card.setDevice(context)
         val service = restAdapter.create(GatewayService::class.java)
         service.getToken(defaultPublishableKey, card, callback as Callback<Token?>?)
     }
@@ -65,7 +66,7 @@ class Mercadopago(private val defaultPublishableKey: String, private val mContex
         return service.getPaymentMethodById(defaultPublishableKey, paymentMethod)
     }
 
-    fun getPaymentMethods(paymentMethod: String?): List<PaymentMethod?>? {
+    fun getPaymentMethods(): List<PaymentMethod?>? {
         val service =
             restAdapterApi.create(PaymentService::class.java)
         return service.getPaymentMethod(defaultPublishableKey)
@@ -91,7 +92,7 @@ class Mercadopago(private val defaultPublishableKey: String, private val mContex
 
     companion object {
         private const val MERCADOPAGO_BASE_URL = "https://pagamento.mercadopago.com"
-        private const val BASE_URL = "https://api.mercadolibre.com"
+        private const val BASE_URL = "https://api.mercadopago.com/v1"
     }
 
 }
