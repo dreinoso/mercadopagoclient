@@ -19,4 +19,7 @@
     <string name="welcome">Hello there this is a Demo App  Client for Mercado Pago sdk, it has been set a test ng account</string>
     <string name="amount">Amount to pay</string>
     <string name="continue_btn">Pay</string>
+    <string name="select_method_payment">"Please select a payment method "</string>
+    <string name="methods">Payment Method</string>
+    <string name="number_of_options">Nuimber of Options</string>
 </resources>
