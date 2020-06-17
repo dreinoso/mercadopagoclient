@@ -9,13 +9,18 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chainreaction.mercadopagoclient.R
+import androidx.lifecycle.ViewModelProviders
+import com.chainreaction.mercadopagoclient.databinding.FragmentInstallmnentListBinding
+import com.chainreaction.mercadopagoclient.databinding.FragmentPaymentBankListBinding
 
 import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent
 import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent.DummyItem
 
-class installmnentFragment : Fragment() {
+class InstallmentFragment : Fragment() {
 
+    private lateinit var viewModel: MainViewModel
+    private var _binding: FragmentInstallmnentListBinding? = null
+    private val binding get() = _binding!!
     // TODO: Customize parameters
     private var columnCount = 1
 
@@ -33,8 +38,8 @@ class installmnentFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_installmnent_list, container, false)
-
+        _binding = FragmentInstallmnentListBinding.inflate(inflater, container, false)
+        val view = binding.root
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
@@ -46,6 +51,11 @@ class installmnentFragment : Fragment() {
             }
         }
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
     }
 
     override fun onAttach(context: Context) {
@@ -86,7 +96,7 @@ class installmnentFragment : Fragment() {
         // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
-            installmnentFragment().apply {
+            InstallmentFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }

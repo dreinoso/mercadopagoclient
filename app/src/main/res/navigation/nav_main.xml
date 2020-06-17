@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/installmnentFragment"
-        android:name="com.chainreaction.mercadopagoclient.ui.main.installmnentFragment"
+        android:name="com.chainreaction.mercadopagoclient.ui.main.InstallmentFragment"
         android:label="fragment_installmnent_list"
         tools:layout="@layout/fragment_installmnent_list" >
         <action

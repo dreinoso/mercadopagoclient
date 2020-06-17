@@ -33,7 +33,7 @@ interface PaymentService {
     fun getPaymentMethodByBin(
         @Query("public_key") public_key: String?,
         @Query("bin") bin: String?,
-        callback: Callback<List<PaymentMethod?>?>?
+        callback: Callback<MutableList<PaymentMethod>>?
     )
 
     @GET("/checkout/custom/payment_methods/search")

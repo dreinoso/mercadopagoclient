@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.chainreaction.mercadopagoclient.R
 
 
-import com.chainreaction.mercadopagoclient.ui.main.installmnentFragment.OnListFragmentInteractionListener
+import com.chainreaction.mercadopagoclient.ui.main.InstallmentFragment.OnListFragmentInteractionListener
 import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent.DummyItem
 
 import kotlinx.android.synthetic.main.fragment_installmnent.view.*
@@ -36,7 +36,7 @@ class InstallmnentRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_installmnent, parent, false)
+            .inflate(R.layout.fragment_installment, parent, false)
         return ViewHolder(view)
     }
 

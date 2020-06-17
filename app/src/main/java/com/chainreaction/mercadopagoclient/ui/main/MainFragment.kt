@@ -4,20 +4,15 @@ import android.app.ProgressDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.viewbinding.ViewBinding
 import com.chainreaction.mercadopagoclient.MainActivity
 import com.chainreaction.mercadopagoclient.Mercadopago
-import com.chainreaction.mercadopagoclient.R
-import com.chainreaction.mercadopagoclient.databinding.MainActivityBinding
 import com.chainreaction.mercadopagoclient.databinding.MainFragmentBinding
 import com.chainreaction.mercadopagoclient.model.Card
 import com.chainreaction.mercadopagoclient.model.PaymentMethod
@@ -58,7 +53,7 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        mp = Mercadopago("841d020b-1077-4742-ad55-7888a0f5aefa", context)
+        mp = context?.let { Mercadopago("841d020b-1077-4742-ad55-7888a0f5aefa", it) }
         setInputs()
         //Get payment methods and show installments spinner
         handleInstallments()

@@ -32,7 +32,7 @@ class Mercadopago(private val defaultPublishableKey: String, private val mContex
 
     fun getPaymentMethodByBin(
         bin: String?,
-        callback: Callback<List<PaymentMethod?>?>?
+        callback: Callback<MutableList<PaymentMethod>>?
     ) {
         val service =
             restAdapterApi.create(PaymentService::class.java)

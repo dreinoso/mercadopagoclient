@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
 import com.chainreaction.mercadopagoclient.R
+import com.chainreaction.mercadopagoclient.databinding.FragmentAmountBinding
+import com.chainreaction.mercadopagoclient.databinding.FragmentPaymentBankListBinding
 
 import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent
 import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent.DummyItem
@@ -21,7 +24,9 @@ import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent.DummyItem
  */
 class PaymentBankFragment : Fragment() {
 
-    // TODO: Customize parameters
+    private lateinit var viewModel: MainViewModel
+    private var _binding: FragmentPaymentBankListBinding? = null
+    private val binding get() = _binding!!
     private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
@@ -38,8 +43,8 @@ class PaymentBankFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_payment_bank_list, container, false)
-
+        _binding = FragmentPaymentBankListBinding.inflate(inflater, container, false)
+        val view = binding.root
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
@@ -51,6 +56,11 @@ class PaymentBankFragment : Fragment() {
             }
         }
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
     }
 
     override fun onAttach(context: Context) {
