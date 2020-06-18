@@ -30,7 +30,7 @@
         android:label="fragment_installmnent_list"
         tools:layout="@layout/fragment_installmnent_list" >
         <argument
-            android:name="paymentId"
+            android:name="paymentMethodId"
             app:argType="string"
             android:defaultValue=" " />
         <action

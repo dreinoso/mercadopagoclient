@@ -1,10 +1,10 @@
 package com.chainreaction.mercadopagoclient.ui.main
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.chainreaction.mercadopagoclient.R
 import com.chainreaction.mercadopagoclient.model.Entity
 import kotlinx.android.synthetic.main.fragment_installment.view.*
@@ -16,7 +16,7 @@ class InstallmentRecyclerViewAdapter(
     private lateinit var mValues: List<Entity.PlayerCosts>
 
     init {
-        mValues  = allInstallments.get(0).payer_costs!!
+        mValues  = allInstallments.get(0)?.payer_costs!!
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,5 +39,11 @@ class InstallmentRecyclerViewAdapter(
 //            return super.toString() + " '" + mContentView.text + "'"
             return ""
         }
+    }
+
+    fun clear() {
+        val size: Int = this.mValues.size
+        mValues = listOf()
+        notifyItemRangeRemoved(0, size)
     }
 }

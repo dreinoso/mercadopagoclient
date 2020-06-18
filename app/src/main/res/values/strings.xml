@@ -25,4 +25,9 @@
     <string name="select_bank">Please select a bank</string>
     <string name="installments">These are  lat Instellments for this payment method</string>
     <string name="btn_done">Done</string>
+    <string name="btn_ok">Ok</string>
+    <string name="btn_start_again">Start again</string>
+    <string name="dialog_success_title">Transaction completed!</string>
+    <string name="dialog_failure_title">Something went worng</string>
+    <string name="dialog_failure_message">Sorry the payment method selected is not working at the moment</string>
 </resources>
