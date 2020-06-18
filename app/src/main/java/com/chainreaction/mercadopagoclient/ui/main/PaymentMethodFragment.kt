@@ -52,6 +52,7 @@ class PaymentMethodFragment : Fragment() {
             binding.list.adapter = adapter
             binding.list.layoutManager = LinearLayoutManager(context)
             adapter.notifyDataSetChanged()
+            binding.progressBar.visibility = View.GONE
         })
         viewModel.getPaymentMethods()
     }

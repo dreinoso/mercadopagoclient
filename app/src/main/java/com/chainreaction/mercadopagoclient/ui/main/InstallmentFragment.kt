@@ -37,6 +37,7 @@ class InstallmentFragment : Fragment() {
             binding.list.adapter = adapter
             binding.list.layoutManager = LinearLayoutManager(context)
             adapter.notifyDataSetChanged()
+            binding.progressBar.visibility = View.GONE
         })
         binding.btnDone.setOnClickListener { resetFlow() }
         viewModel.getInstallments("cencosud")
