@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">mercadopagoclient</string>
+    <string name="app_name">MP Client</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="add_card_form_number_input_label">Número de tarjeta</string>
@@ -16,19 +16,19 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="spinner_header">asdf</string>
     <string name="title_activity_test">test</string>
-    <string name="welcome">Hello there this is a Demo App  Client for Mercado Pago sdk, it has been set a test ng account</string>
+    <string name="welcome">Hello there this is a Demo App Client for Mercado Pago sdk, a testing account (public key) is being used</string>
     <string name="amount">Amount to pay</string>
     <string name="continue_btn">Pay</string>
     <string name="select_method_payment">"Please select a payment method "</string>
     <string name="methods">Payment Method</string>
     <string name="number_of_options">Nuimber of Options</string>
     <string name="select_bank">Please select a bank</string>
-    <string name="installments">These are  lat Instellments for this payment method</string>
+    <string name="installments">These are the last Installments for this payment method</string>
     <string name="btn_done">Done</string>
     <string name="btn_ok">Ok</string>
     <string name="btn_start_again">Start again</string>
     <string name="dialog_success_title">Transaction completed!</string>
-    <string name="dialog_failure_title">Something went worng</string>
+    <string name="dialog_failure_title">Something went wrong</string>
     <string name="dialog_failure_message">Sorry the payment method selected is not working at the moment</string>
     <string name="amount_error">Please add an amount to pay</string>
 </resources>
