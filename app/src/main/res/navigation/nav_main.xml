@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/amountFragment"
-        android:name="com.chainreaction.mercadopagoclient.ui.main.AmountFragment"
+        android:name="com.chainreaction.mercadopagoclient.ui.home.AmountFragment"
         android:label="fragment_amount"
         tools:layout="@layout/fragment_amount" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/paymentMethodFragment"
-        android:name="com.chainreaction.mercadopagoclient.ui.main.PaymentMethodFragment"
+        android:name="com.chainreaction.mercadopagoclient.ui.methods.PaymentMethodFragment"
         android:label="fragment_payment_method_list"
         tools:layout="@layout/fragment_payment_method_list" >
         <action
@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/installmnentFragment"
-        android:name="com.chainreaction.mercadopagoclient.ui.main.InstallmentFragment"
+        android:name="com.chainreaction.mercadopagoclient.ui.installments.InstallmentFragment"
         android:label="fragment_installmnent_list"
         tools:layout="@layout/fragment_installmnent_list" >
         <argument
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/paymentBankFragment"
-        android:name="com.chainreaction.mercadopagoclient.ui.main.PaymentBankFragment"
+        android:name="com.chainreaction.mercadopagoclient.ui.banks.PaymentBankFragment"
         android:label="fragment_payment_bank_list"
         tools:layout="@layout/fragment_payment_bank_list" >
         <argument

@@ -1,4 +1,4 @@
-package com.chainreaction.mercadopagoclient.ui.main
+package com.chainreaction.mercadopagoclient.ui.installments
 
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chainreaction.mercadopagoclient.databinding.FragmentInstallmnentListBinding
 import com.chainreaction.mercadopagoclient.model.Entity
+import com.chainreaction.mercadopagoclient.ui.main.MainViewModel
 
 
 class InstallmentFragment : Fragment() {
@@ -41,7 +42,10 @@ class InstallmentFragment : Fragment() {
             if (installments.isNullOrEmpty()) {
                 showFailureDialog()
             } else {
-                adapter = InstallmentRecyclerViewAdapter(installments as List<Entity.Installment>)
+                adapter =
+                    InstallmentRecyclerViewAdapter(
+                        installments as List<Entity.Installment>
+                    )
                 binding.list.adapter = adapter
                 binding.list.layoutManager = LinearLayoutManager(context)
                 val dividerItemDecoration = DividerItemDecoration(

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:name="com.chainreaction.mercadopagoclient.ui.main.PaymentBankFragment"
-    tools:context=".ui.main.PaymentBankFragment">
+    tools:context=".ui.banks.PaymentBankFragment">
 
     <TextView
         android:id="@+id/title"

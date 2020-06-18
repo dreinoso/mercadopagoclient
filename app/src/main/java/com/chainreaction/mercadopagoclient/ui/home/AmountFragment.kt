@@ -1,4 +1,4 @@
-package com.chainreaction.mercadopagoclient.ui.main
+package com.chainreaction.mercadopagoclient.ui.home
 
 import android.app.Activity
 import android.os.Bundle
@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.chainreaction.mercadopagoclient.R
 import com.chainreaction.mercadopagoclient.databinding.FragmentAmountBinding
+import com.chainreaction.mercadopagoclient.ui.main.MainViewModel
 import com.google.android.material.snackbar.Snackbar
 import java.text.NumberFormat
 

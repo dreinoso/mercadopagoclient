@@ -1,4 +1,4 @@
-package com.chainreaction.mercadopagoclient.ui.main
+package com.chainreaction.mercadopagoclient.ui.methods
 
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatButton
 import com.chainreaction.mercadopagoclient.R
 import com.chainreaction.mercadopagoclient.model.PaymentGroup
 import com.chainreaction.mercadopagoclient.model.PaymentMethod
-import com.chainreaction.mercadopagoclient.ui.main.PaymentMethodFragment.OnListFragmentInteractionListener
+import com.chainreaction.mercadopagoclient.ui.methods.PaymentMethodFragment.OnListFragmentInteractionListener
 import kotlinx.android.synthetic.main.fragment_payment_method.view.*
 
 class PaymentMethodRecyclerViewAdapter(

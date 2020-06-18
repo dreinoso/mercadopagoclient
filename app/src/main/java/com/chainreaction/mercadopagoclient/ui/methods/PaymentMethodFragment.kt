@@ -1,4 +1,4 @@
-package com.chainreaction.mercadopagoclient.ui.main
+package com.chainreaction.mercadopagoclient.ui.methods
 
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chainreaction.mercadopagoclient.databinding.FragmentPaymentMethodListBinding
 import com.chainreaction.mercadopagoclient.model.PaymentMethod
+import com.chainreaction.mercadopagoclient.ui.main.MainViewModel
 
 class PaymentMethodFragment : Fragment() {
 
@@ -20,12 +21,16 @@ class PaymentMethodFragment : Fragment() {
     private val binding get() = _binding!!
     private val TAG = "paymentMethodFragment"
 
-    private val listener = object:OnListFragmentInteractionListener {
+    private val listener = object:
+        OnListFragmentInteractionListener {
         override fun onListFragmentInteraction(methodType: String?) {
             Log.d(TAG, methodType.toString())
             methodType!!
-            view?.findNavController()?.navigate(PaymentMethodFragmentDirections.
-            actionPaymentMethodFragmentToPaymentBankFragment(methodType))
+            view?.findNavController()?.navigate(
+                PaymentMethodFragmentDirections.actionPaymentMethodFragmentToPaymentBankFragment(
+                    methodType
+                )
+            )
         }
     }
 
@@ -48,7 +53,11 @@ class PaymentMethodFragment : Fragment() {
         viewModel = ViewModelProviders.of(this!!.requireActivity()).get(MainViewModel::class.java)
         viewModel.paymentMethodsLiveData.observe(viewLifecycleOwner, Observer {
                 methods ->
-            val adapter = PaymentMethodRecyclerViewAdapter(methods as List<PaymentMethod>, listener)
+            val adapter =
+                PaymentMethodRecyclerViewAdapter(
+                    methods as List<PaymentMethod>,
+                    listener
+                )
             binding.list.adapter = adapter
             binding.list.layoutManager = LinearLayoutManager(context)
             adapter.notifyDataSetChanged()

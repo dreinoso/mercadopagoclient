@@ -1,4 +1,4 @@
-package com.chainreaction.mercadopagoclient.ui.main
+package com.chainreaction.mercadopagoclient.ui.banks
 
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.chainreaction.mercadopagoclient.databinding.FragmentPaymentBankListBinding
 import com.chainreaction.mercadopagoclient.model.PaymentMethod
+import com.chainreaction.mercadopagoclient.ui.main.MainViewModel
 
 class PaymentBankFragment : Fragment() {
 
@@ -19,12 +20,16 @@ class PaymentBankFragment : Fragment() {
     private val binding get() = _binding!!
     val TAG = "PaymentBankFragment"
 
-    private val listener = object: PaymentBankFragment.OnListFragmentInteractionListener {
+    private val listener = object:
+        OnListFragmentInteractionListener {
         override fun onListFragmentInteraction(paymentId: String?) {
             Log.d(TAG, paymentId.toString())
             paymentId!!
-            view?.findNavController()?.navigate(PaymentBankFragmentDirections.
-            actionPaymentBankFragmentToInstallmnentFragment(paymentId))
+            view?.findNavController()?.navigate(
+                PaymentBankFragmentDirections.actionPaymentBankFragmentToInstallmnentFragment(
+                    paymentId
+                )
+            )
         }
     }
 
@@ -40,7 +45,12 @@ class PaymentBankFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this!!.requireActivity()).get(MainViewModel::class.java)
         val methodType = arguments?.get("paymentType").toString()
-        val adapter = BankRecyclerViewAdapter(viewModel.paymentMethodsLiveData.value as List<PaymentMethod>, listener, methodType)
+        val adapter =
+            BankRecyclerViewAdapter(
+                viewModel.paymentMethodsLiveData.value as List<PaymentMethod>,
+                listener,
+                methodType
+            )
         binding.list.adapter = adapter
         binding.list.layoutManager = LinearLayoutManager(context)
         adapter.notifyDataSetChanged()

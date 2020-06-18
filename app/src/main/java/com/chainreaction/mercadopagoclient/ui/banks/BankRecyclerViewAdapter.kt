@@ -1,12 +1,10 @@
-package com.chainreaction.mercadopagoclient.ui.main
+package com.chainreaction.mercadopagoclient.ui.banks
 
-import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
-import com.chainreaction.mercadopagoclient.R
 import com.chainreaction.mercadopagoclient.R.*
 import com.chainreaction.mercadopagoclient.model.PaymentMethod
 import kotlinx.android.synthetic.main.fragment_payment_bank.view.*

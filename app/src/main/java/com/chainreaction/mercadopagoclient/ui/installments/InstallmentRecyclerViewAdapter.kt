@@ -1,4 +1,4 @@
-package com.chainreaction.mercadopagoclient.ui.main
+package com.chainreaction.mercadopagoclient.ui.installments
 
 import android.view.LayoutInflater
 import android.view.View
