@@ -12,8 +12,6 @@ class Token {
     var cardNumberLength: Int? = null
     var creationDate: Date? = null
     var truncCardNumber: String? = null
-
-    //TODO: cardholder
     var securityCodeLength: Int? = null
     var expirationMonth: Int? = null
     var expirationYear: Int? = null

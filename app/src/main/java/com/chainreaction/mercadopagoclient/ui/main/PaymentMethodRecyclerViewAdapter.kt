@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
 import com.chainreaction.mercadopagoclient.R
 import com.chainreaction.mercadopagoclient.model.PaymentGroup
 import com.chainreaction.mercadopagoclient.model.PaymentMethod
@@ -31,7 +31,8 @@ class PaymentMethodRecyclerViewAdapter(
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            mListener?.onListFragmentInteraction(v.name.text.toString())
+            val paymentMethod = v.tag as PaymentGroup
+            mListener?.onListFragmentInteraction(paymentMethod.type)
         }
 
         mValues = groupMethods()
@@ -46,10 +47,8 @@ class PaymentMethodRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mIdView.text = item.type
-        holder.mContentView.text = item.count.toString()
-
-        with(holder.mView) {
+        holder.btnMethod.text = item.type.plus(" (").plus(item.count).plus(")")
+        with(holder.btnMethod) {
             tag = item
             setOnClickListener(mOnClickListener)
         }
@@ -58,11 +57,10 @@ class PaymentMethodRecyclerViewAdapter(
     override fun getItemCount(): Int = mValues.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.name
-        val mContentView: TextView = mView.count
+        val btnMethod: AppCompatButton = mView.name
 
         override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
+            return super.toString() + " '" + btnMethod.text + "'"
         }
     }
 }

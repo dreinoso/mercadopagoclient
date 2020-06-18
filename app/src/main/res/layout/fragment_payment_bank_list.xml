@@ -24,7 +24,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/match_cconstraint"
+        android:layout_height="@dimen/match_constraint"
         android:layout_marginTop="@dimen/text_margin"
         android:layout_marginStart="@dimen/text_margin"
         android:layout_marginEnd="@dimen/text_margin"

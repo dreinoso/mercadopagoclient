@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_margin">16dp</dimen>
-    <dimen name="match_cconstraint">0dp</dimen>
+    <dimen name="match_constraint">0dp</dimen>
     <dimen name="sp20_secondary_title">20sp</dimen>
+    <dimen name="btn_margin">42dp</dimen>
 </resources>
