@@ -2,6 +2,7 @@ package com.chainreaction.mercadopagoclient
 
 import android.content.Context
 import com.chainreaction.mercadopagoclient.model.Card
+import com.chainreaction.mercadopagoclient.model.Entity
 import com.chainreaction.mercadopagoclient.model.PaymentMethod
 import com.chainreaction.mercadopagoclient.model.Token
 import com.google.gson.FieldNamingPolicy
@@ -82,9 +83,10 @@ class Mercadopago(private val defaultPublishableKey: String) {
     }
 
     fun getInstallments(
-        paymentMethod: String?, paymentMethodId: String?,
-        issuerId: String?, amount: Long?
-    ): List<PaymentMethod?>? {
+        paymentMethodId: String?,
+        issuerId: String?,
+        amount: Long?
+    ): List<Entity.Installment?>? {
         val service =
             restAdapterApi.create(PaymentService::class.java)
         return service.getInstallments(defaultPublishableKey, paymentMethodId, issuerId, amount)

@@ -62,7 +62,7 @@ class AmountFragment : Fragment() {
             }
         )
 
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProviders.of(this!!.requireActivity()).get(MainViewModel::class.java)
 
         binding.continueBtn.setOnClickListener { view ->
             view.findNavController().navigate(AmountFragmentDirections.actionAmountFragmentToPaymentMethodFragment())

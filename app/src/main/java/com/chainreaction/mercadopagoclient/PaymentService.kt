@@ -1,5 +1,6 @@
 package com.chainreaction.mercadopagoclient
 
+import com.chainreaction.mercadopagoclient.model.Entity
 import com.chainreaction.mercadopagoclient.model.PaymentMethod
 import retrofit.Callback
 import retrofit.http.GET
@@ -21,7 +22,7 @@ interface PaymentService {
         @Query("payment_method_id") payment_method_id: String?,
         @Query("issuer.id") issuerId: String?,
         @Query("amount") amount: Long?
-    ): List<PaymentMethod?>?
+    ): List<Entity.Installment?>?
 
     @GET("/checkout/custom/payment_methods/search")
     fun getPaymentMethodByBin(

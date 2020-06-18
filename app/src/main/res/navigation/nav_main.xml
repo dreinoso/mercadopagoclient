@@ -29,6 +29,10 @@
         android:name="com.chainreaction.mercadopagoclient.ui.main.InstallmentFragment"
         android:label="fragment_installmnent_list"
         tools:layout="@layout/fragment_installmnent_list" >
+        <argument
+            android:name="paymentId"
+            app:argType="string"
+            android:defaultValue=" " />
         <action
             android:id="@+id/action_installmnentFragment_to_amountFragment"
             app:destination="@id/amountFragment" />

@@ -23,4 +23,6 @@
     <string name="methods">Payment Method</string>
     <string name="number_of_options">Nuimber of Options</string>
     <string name="select_bank">Please select a bank</string>
+    <string name="installments">These are  lat Instellments for this payment method</string>
+    <string name="btn_done">Done</string>
 </resources>

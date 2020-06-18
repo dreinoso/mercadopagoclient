@@ -18,7 +18,6 @@ class PaymentMethodFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
     private var _binding: FragmentPaymentMethodListBinding? = null
     private val binding get() = _binding!!
-    private var columnCount = 1
     private val TAG = "paymentMethodFragment"
 
     private val listener = object:OnListFragmentInteractionListener {

@@ -1,6 +1,5 @@
 package com.chainreaction.mercadopagoclient.ui.main
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,11 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
 import com.chainreaction.mercadopagoclient.databinding.FragmentPaymentBankListBinding
 import com.chainreaction.mercadopagoclient.model.PaymentMethod
-
-import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent.DummyItem
 
 class PaymentBankFragment : Fragment() {
 
@@ -27,8 +23,8 @@ class PaymentBankFragment : Fragment() {
         override fun onListFragmentInteraction(paymentId: String?) {
             Log.d(TAG, paymentId.toString())
             paymentId!!
-//            view?.findNavController()?.navigate(PaymentMethodFragmentDirections.
-//            actionPaymentMethodFragmentToPaymentBankFragment(paymentId))
+            view?.findNavController()?.navigate(PaymentBankFragmentDirections.
+            actionPaymentBankFragmentToInstallmnentFragment(paymentId))
         }
     }
 
