@@ -36,8 +36,7 @@ class InstallmentRecyclerViewAdapter(
         val info: TextView = mView.info
 
         override fun toString(): String {
-//            return super.toString() + " '" + mContentView.text + "'"
-            return ""
+            return info.toString()
         }
     }
 

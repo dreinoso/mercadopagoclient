@@ -4,26 +4,13 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.widget.ImageViewCompat
 import com.chainreaction.mercadopagoclient.R
 import com.chainreaction.mercadopagoclient.model.PaymentMethod
-
-
-import com.chainreaction.mercadopagoclient.ui.main.PaymentBankFragment.OnListFragmentInteractionListener
-import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent.DummyItem
 import kotlinx.android.synthetic.main.fragment_payment_bank.view.*
-
-import kotlinx.android.synthetic.main.fragment_payment_method.view.*
 import kotlinx.android.synthetic.main.fragment_payment_method.view.name
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnListFragmentInteractionListener].
- * TODO: Replace the implementation with code for your data type.
- */
 class BankRecyclerViewAdapter(
     private val allMethods: List<PaymentMethod>,
     private val mListener: PaymentBankFragment.OnListFragmentInteractionListener?,

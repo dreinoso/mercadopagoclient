@@ -9,8 +9,6 @@ import android.widget.TextView
 import com.chainreaction.mercadopagoclient.R
 import com.chainreaction.mercadopagoclient.model.PaymentGroup
 import com.chainreaction.mercadopagoclient.model.PaymentMethod
-
-
 import com.chainreaction.mercadopagoclient.ui.main.PaymentMethodFragment.OnListFragmentInteractionListener
 import kotlinx.android.synthetic.main.fragment_payment_method.view.*
 

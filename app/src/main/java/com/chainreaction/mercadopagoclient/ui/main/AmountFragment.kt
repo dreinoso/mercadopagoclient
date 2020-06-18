@@ -13,8 +13,10 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
+import com.chainreaction.mercadopagoclient.R
 
 import com.chainreaction.mercadopagoclient.databinding.FragmentAmountBinding
+import com.google.android.material.snackbar.Snackbar
 import java.text.NumberFormat
 
 class AmountFragment : Fragment() {
@@ -65,7 +67,13 @@ class AmountFragment : Fragment() {
         viewModel = ViewModelProviders.of(this!!.requireActivity()).get(MainViewModel::class.java)
 
         binding.continueBtn.setOnClickListener { view ->
-            view.findNavController().navigate(AmountFragmentDirections.actionAmountFragmentToPaymentMethodFragment())
+            if (binding.amount.text.toString().isEmpty() || binding.amount.text.toString() == "$0.00") {
+                val snack = Snackbar.make(view,getString(R.string.amount_error),Snackbar.LENGTH_LONG)
+                snack.show()
+            } else {
+                view.findNavController()
+                    .navigate(AmountFragmentDirections.actionAmountFragmentToPaymentMethodFragment())
+            }
         }
     }
 

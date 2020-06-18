@@ -30,4 +30,5 @@
     <string name="dialog_success_title">Transaction completed!</string>
     <string name="dialog_failure_title">Something went worng</string>
     <string name="dialog_failure_message">Sorry the payment method selected is not working at the moment</string>
+    <string name="amount_error">Please add an amount to pay</string>
 </resources>
