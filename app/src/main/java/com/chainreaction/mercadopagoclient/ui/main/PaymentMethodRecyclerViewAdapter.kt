@@ -11,8 +11,7 @@ import com.chainreaction.mercadopagoclient.model.PaymentGroup
 import com.chainreaction.mercadopagoclient.model.PaymentMethod
 
 
-import com.chainreaction.mercadopagoclient.ui.main.paymentMethodFragment.OnListFragmentInteractionListener
-import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent.DummyItem
+import com.chainreaction.mercadopagoclient.ui.main.PaymentMethodFragment.OnListFragmentInteractionListener
 import kotlinx.android.synthetic.main.fragment_payment_method.view.*
 
 class PaymentMethodRecyclerViewAdapter(

@@ -4,14 +4,20 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.widget.ImageViewCompat
 import com.chainreaction.mercadopagoclient.R
+import com.chainreaction.mercadopagoclient.model.PaymentMethod
 
 
 import com.chainreaction.mercadopagoclient.ui.main.PaymentBankFragment.OnListFragmentInteractionListener
 import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent.DummyItem
-
 import kotlinx.android.synthetic.main.fragment_payment_bank.view.*
+
+import kotlinx.android.synthetic.main.fragment_payment_method.view.*
+import kotlinx.android.synthetic.main.fragment_payment_method.view.name
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
@@ -19,18 +25,21 @@ import kotlinx.android.synthetic.main.fragment_payment_bank.view.*
  * TODO: Replace the implementation with code for your data type.
  */
 class BankRecyclerViewAdapter(
-    private val mValues: List<DummyItem>,
-    private val mListener: OnListFragmentInteractionListener?
-) : RecyclerView.Adapter<BankRecyclerViewAdapter.ViewHolder>() {
+    private val allMethods: List<PaymentMethod>,
+    private val mListener: PaymentBankFragment.OnListFragmentInteractionListener?,
+    private val methodTypeFilter: String
+    ) : RecyclerView.Adapter<BankRecyclerViewAdapter.ViewHolder>() {
+
+    val TAG: String = "PaymentMethodRecyclerViewAdapter"
+    private var mValues: List<PaymentMethod>
 
     private val mOnClickListener: View.OnClickListener
 
     init {
+        mValues = allMethods.filter {it.paymentTypeId.equals(methodTypeFilter)}
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as DummyItem
-            // Notify the active callbacks interface (the activity, if the fragment is attached to
-            // one) that an item has been selected.
-            mListener?.onListFragmentInteraction(item)
+            val paymentMethod = v.tag as PaymentMethod
+            mListener?.onListFragmentInteraction(paymentMethod.id)
         }
     }
 
@@ -42,9 +51,10 @@ class BankRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
-
+        holder.name.text = item.name
+        if (!item.status?.equals("active")!!) {
+            holder.active.visibility = View.GONE
+        }
         with(holder.mView) {
             tag = item
             setOnClickListener(mOnClickListener)
@@ -54,11 +64,7 @@ class BankRecyclerViewAdapter(
     override fun getItemCount(): Int = mValues.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.item_number
-        val mContentView: TextView = mView.content
-
-        override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
-        }
+        val name: TextView = mView.name
+        val active: AppCompatImageView = mView.active
     }
 }

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layoutManager="LinearLayoutManager"
     android:name="com.chainreaction.mercadopagoclient.ui.main.paymentMethodFragment"
-    tools:context=".ui.main.paymentMethodFragment">
+    tools:context=".ui.main.PaymentMethodFragment">
 
     <TextView
     android:id="@+id/title"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/text_margin"
         android:layout_marginEnd="@dimen/text_margin"
-        android:textSize="20sp"
+        android:textSize="@dimen/sp20_secondary_title"
         android:text="@string/methods"
         android:layout_marginTop="@dimen/text_margin"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/text_margin"
-        android:textSize="20sp"
+        android:textSize="@dimen/sp20_secondary_title"
         android:text="@string/number_of_options"
         android:layout_marginTop="@dimen/text_margin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +50,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/match_cconstraint"
         android:layout_marginTop="@dimen/text_margin"
         android:layout_marginStart="@dimen/text_margin"
         android:layout_marginEnd="@dimen/text_margin"

@@ -8,11 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chainreaction.mercadopagoclient.databinding.FragmentPaymentMethodListBinding
 import com.chainreaction.mercadopagoclient.model.PaymentMethod
 
-class paymentMethodFragment : Fragment() {
+class PaymentMethodFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
     private var _binding: FragmentPaymentMethodListBinding? = null
@@ -23,6 +24,9 @@ class paymentMethodFragment : Fragment() {
     private val listener = object:OnListFragmentInteractionListener {
         override fun onListFragmentInteraction(methodType: String?) {
             Log.d(TAG, methodType.toString())
+            methodType!!
+            view?.findNavController()?.navigate(PaymentMethodFragmentDirections.
+            actionPaymentMethodFragmentToPaymentBankFragment(methodType))
         }
     }
 
@@ -42,7 +46,7 @@ class paymentMethodFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProviders.of(this!!.requireActivity()).get(MainViewModel::class.java)
         viewModel.paymentMethodsLiveData.observe(viewLifecycleOwner, Observer {
                 methods ->
             val adapter = PaymentMethodRecyclerViewAdapter(methods as List<PaymentMethod>, listener)

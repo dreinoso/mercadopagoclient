@@ -55,7 +55,7 @@ class InstallmentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProviders.of(this!!.requireActivity()).get(MainViewModel::class.java)
     }
 
     override fun onAttach(context: Context) {

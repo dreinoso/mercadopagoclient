@@ -9,6 +9,7 @@ class PaymentMethod {
     var id: String? = null
     var name: String? = null
     var paymentTypeId: String? = null
+    var status: String? = null
     var cardIssuer: CardIssuer? = null
     var siteId: String? = null
     var secureThumbnail: String? = null

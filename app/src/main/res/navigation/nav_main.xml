@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/paymentMethodFragment"
-        android:name="com.chainreaction.mercadopagoclient.ui.main.paymentMethodFragment"
+        android:name="com.chainreaction.mercadopagoclient.ui.main.PaymentMethodFragment"
         android:label="fragment_payment_method_list"
         tools:layout="@layout/fragment_payment_method_list" >
         <action
@@ -38,6 +38,10 @@
         android:name="com.chainreaction.mercadopagoclient.ui.main.PaymentBankFragment"
         android:label="fragment_payment_bank_list"
         tools:layout="@layout/fragment_payment_bank_list" >
+        <argument
+            android:name="paymentType"
+            app:argType="string"
+            android:defaultValue=" " />
         <action
             android:id="@+id/action_paymentBankFragment_to_installmnentFragment"
             app:destination="@id/installmnentFragment" />

@@ -2,40 +2,33 @@ package com.chainreaction.mercadopagoclient.ui.main
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
-import com.chainreaction.mercadopagoclient.R
-import com.chainreaction.mercadopagoclient.databinding.FragmentAmountBinding
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.chainreaction.mercadopagoclient.databinding.FragmentPaymentBankListBinding
+import com.chainreaction.mercadopagoclient.model.PaymentMethod
 
-import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent
 import com.chainreaction.mercadopagoclient.ui.main.dummy.DummyContent.DummyItem
 
-/**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [PaymentBankFragment.OnListFragmentInteractionListener] interface.
- */
 class PaymentBankFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
     private var _binding: FragmentPaymentBankListBinding? = null
     private val binding get() = _binding!!
-    private var columnCount = 1
+    val TAG = "PaymentBankFragment"
 
-    private var listener: OnListFragmentInteractionListener? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
+    private val listener = object: PaymentBankFragment.OnListFragmentInteractionListener {
+        override fun onListFragmentInteraction(paymentId: String?) {
+            Log.d(TAG, paymentId.toString())
+            paymentId!!
+//            view?.findNavController()?.navigate(PaymentMethodFragmentDirections.
+//            actionPaymentMethodFragmentToPaymentBankFragment(paymentId))
         }
     }
 
@@ -44,67 +37,20 @@ class PaymentBankFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentPaymentBankListBinding.inflate(inflater, container, false)
-        val view = binding.root
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = BankRecyclerViewAdapter(DummyContent.ITEMS, listener)
-            }
-        }
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProviders.of(this!!.requireActivity()).get(MainViewModel::class.java)
+        val methodType = arguments?.get("paymentType").toString()
+        val adapter = BankRecyclerViewAdapter(viewModel.paymentMethodsLiveData.value as List<PaymentMethod>, listener, methodType)
+        binding.list.adapter = adapter
+        binding.list.layoutManager = LinearLayoutManager(context)
+        adapter.notifyDataSetChanged()
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnListFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
-        }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson
-     * [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
     interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
-    }
-
-    companion object {
-
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            PaymentBankFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
-            }
+        fun onListFragmentInteraction(paymentId: String?)
     }
 }
