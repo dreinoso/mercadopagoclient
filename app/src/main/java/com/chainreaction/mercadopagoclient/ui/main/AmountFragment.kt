@@ -1,23 +1,21 @@
 package com.chainreaction.mercadopagoclient.ui.main
 
+import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatButton
+import android.view.inputmethod.InputMethodManager
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.navGraphViewModels
 import com.chainreaction.mercadopagoclient.R
-
 import com.chainreaction.mercadopagoclient.databinding.FragmentAmountBinding
 import com.google.android.material.snackbar.Snackbar
 import java.text.NumberFormat
+
 
 class AmountFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
@@ -71,10 +69,17 @@ class AmountFragment : Fragment() {
                 val snack = Snackbar.make(view,getString(R.string.amount_error),Snackbar.LENGTH_LONG)
                 snack.show()
             } else {
+                hideKeyboard()
                 view.findNavController()
                     .navigate(AmountFragmentDirections.actionAmountFragmentToPaymentMethodFragment())
             }
         }
+    }
+
+    fun hideKeyboard() {
+        val imm: InputMethodManager =
+            requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 
     companion object {
